@@ -1,5 +1,5 @@
 
-import { useParams } from 'react-router-dom';
+import {Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React from 'react';
 
@@ -7,7 +7,13 @@ function HorariosSessoes({weekday, date, showtimes}){
 	return(
 		<div className="sessao">
             <span className="dias">{weekday} - {date}</span>
-            
+            <div className="horarios">
+                {showtimes.map(horas => 
+                    <Link to={`/assentos/${horas.id}`} key={horas.id}>
+                        <div className="hora">{horas.name}</div>
+                    </Link>)
+                }
+            </div>
         </div>
   );
    
