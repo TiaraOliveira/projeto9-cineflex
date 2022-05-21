@@ -1,15 +1,16 @@
 
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import React from 'react';
 
-function HorariosSessoes({weekday}){
+function HorariosSessoes({weekday, date, showtimes}){
 	return(
-		<Link to={`/Selecaoassento`}>
-			<div>{weekday}</div>
-			
-		</Link>
-   )
+		<div className="sessao">
+            <span className="dias">{weekday} - {date}</span>
+            
+        </div>
+  );
+   
 }
 
 export default function SelecaoHorario() {
@@ -22,7 +23,7 @@ export default function SelecaoHorario() {
 		const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idfilme}/showtimes`)
 	
 	
-		promise.then(resposta => {setHorario([resposta.data.days]);
+		promise.then(resposta => {setHorario(resposta.data.days);
 		});
 	console.log(promise)
 	  }, [idfilme])
@@ -34,7 +35,7 @@ export default function SelecaoHorario() {
 			<div>
 		
 			{Horario.length === 0 ? 'ESPERA AI' :
-            Horario.map(image => <HorariosSessoes  weekday={image.weekday} />)
+            Horario.map(sessoes => <HorariosSessoes  weekday={sessoes.weekday} date={sessoes.date} showtimes={sessoes.showtimes} key={sessoes.id} />)
           }
 
 			
