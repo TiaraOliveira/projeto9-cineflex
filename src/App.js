@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaginaPrincipal from "./components/PaginaPrincipal"
 import SelecaoHorario from "./components/SelecaoHorario"
-import Selecaoassento from "./components/Selecaoassento"
+import SelecaoAssento from "./components/SelecaoAssento"
 import Topo from "./components/Topo"
 
 
@@ -17,7 +17,7 @@ export default function App(){
             {/* Cada rota tem que estar em Route */}
             <Route path="/" element={<PaginaPrincipal />} />
             <Route path="/SelecaoHorario/:idfilme" element={<SelecaoHorario />}/>
-            <Route path="/assentos" element={<Selecaoassento />} />
+            <Route path="/assentos/:ID_DA_SESSAO" element={<SelecaoAssento />} />
         </Routes>
     </BrowserRouter>
     )

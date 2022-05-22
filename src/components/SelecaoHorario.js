@@ -2,6 +2,7 @@
 import {Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React from 'react';
+import styled from 'styled-components';
 
 function HorariosSessoes({weekday, date, showtimes}){
 	return(
@@ -14,6 +15,7 @@ function HorariosSessoes({weekday, date, showtimes}){
                     </Link>)
                 }
             </div>
+
         </div>
   );
    
@@ -22,6 +24,7 @@ function HorariosSessoes({weekday, date, showtimes}){
 export default function SelecaoHorario() {
 	const  { idfilme }  = useParams();
 	const [Horario, setHorario] = React.useState([]);
+	const [Filme, setFilme] = React.useState([]);
 	
 	
 	React.useEffect(() => {
@@ -29,7 +32,9 @@ export default function SelecaoHorario() {
 		const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idfilme}/showtimes`)
 	
 	
-		promise.then(resposta => {setHorario(resposta.data.days);
+		promise.then(resposta => {
+			setHorario(resposta.data.days);
+			setFilme(resposta.data)
 		});
 	console.log(promise)
 	  }, [idfilme])
@@ -46,6 +51,15 @@ export default function SelecaoHorario() {
 
 			
 			</div>
+			
+			<Foto src={Filme.posterURL} alt="" />
 		</>
 	);
 }
+
+
+const Foto = styled.img`
+	width: 129px;
+	margin-bottom: 20px;
+	margin-left: 10px
+`;
