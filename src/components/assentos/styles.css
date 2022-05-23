@@ -44,3 +44,15 @@ border: 1px solid #F7C52B;
 	align-items: center;
 	justify-content: center;
 }
+
+.selecionado{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    margin: 3px;
+    width: 24px;
+    height: 24px;
+    background: #8DD7CF !important;
+    border: 1px solid #1AAE9E !important;
+    border-radius: 100%;
+}

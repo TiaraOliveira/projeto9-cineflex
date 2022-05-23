@@ -3,6 +3,7 @@ import PaginaPrincipal from "./components/PaginaPrincipal"
 import SelecaoHorario from "./components/SelecaoHorario"
 import SelecaoAssento from "./components/assentos/SelecaoAssento"
 import Topo from "./components/Topo"
+import Sucesso from "./components/Sucesso"
 
 
 export default function App(){
@@ -18,6 +19,7 @@ export default function App(){
             <Route path="/" element={<PaginaPrincipal />} />
             <Route path="/SelecaoHorario/:idfilme" element={<SelecaoHorario />}/>
             <Route path="/assentos/:ID_DA_SESSAO" element={<SelecaoAssento />} />
+            <Route path="/sucesso" element={<Sucesso />} />
         </Routes>
     </BrowserRouter>
     )
