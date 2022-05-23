@@ -1,0 +1,46 @@
+.poltrona{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    margin: 3px;
+    width: 24px;
+    height: 24px;
+    background: #C3CFD9;
+    border: 1px solid #7B8B99;
+    border-radius: 100%;
+}
+
+.cinema{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    flex-wrap: wrap;
+	
+    
+}
+
+.container{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    flex-wrap: wrap;
+	margin: 10px;
+    
+}
+
+.indisponivel{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    margin: 3px;
+    width: 24px;
+    height: 24px;
+    background: #FBE192;
+border: 1px solid #F7C52B;
+    border-radius: 100%;
+}
+.opcoes{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}

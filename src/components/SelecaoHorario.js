@@ -8,13 +8,13 @@ function HorariosSessoes({weekday, date, showtimes}){
 	return(
 		<div className="sessao">
             <span className="dias">{weekday} - {date}</span>
-            <div className="horarios">
+            <SessionTime>
                 {showtimes.map(horas => 
                     <Link to={`/assentos/${horas.id}`} key={horas.id}>
                         <div className="hora">{horas.name}</div>
                     </Link>)
                 }
-            </div>
+            </SessionTime>
 
         </div>
   );
@@ -51,8 +51,11 @@ export default function SelecaoHorario() {
 
 			
 			</div>
+			<Footer>
+				<Foto src={Filme.posterURL} alt="" />
+				<Texto>{Filme.title} </Texto>
+			</Footer>
 			
-			<Foto src={Filme.posterURL} alt="" />
 		</>
 	);
 }
@@ -62,4 +65,40 @@ const Foto = styled.img`
 	width: 129px;
 	margin-bottom: 20px;
 	margin-left: 10px
+	background: #FFFFFF;
+box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+border-radius: 3px;
+`;
+
+const Footer = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`;
+
+const Texto = styled.h1`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 30px;
+display: flex;
+align-items: center;
+
+color: #293845;
+
+
+`;
+
+const SessionTime = styled.div`
+display: flex;
+align-items: center;
+width: 83px;
+height: 43px;
+left: 114px;
+top: 227px;
+
+background: #E8833A;
+border-radius: 3px;
+margin: 50px;
 `;
