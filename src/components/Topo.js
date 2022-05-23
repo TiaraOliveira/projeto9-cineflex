@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export default function Topo() {
 	return (
 		<>
-			<Container>Cineflex</Container>
+			<Container>CINEFLEX</Container>
 			
 		</>
 	);

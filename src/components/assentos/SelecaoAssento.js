@@ -74,7 +74,7 @@ function SelectionSeats(id, isAvailable){
 
     return(
         <>
-         <div>Selecione o(s) assento(s)</div>
+         <div className='Selecion'>Selecione o(s) assento(s)</div>
          <div className='cinema'>
 		    {Assento.length === 0 ? 'ESPERA AI' : Assento.map(assentos => 
             <div className={`${assentos.isAvailable=== false?"indisponivel": "poltrona"} ${(assentos.selecionada) === true ?"selecionado": ""}  `} onClick={()=>SelectionSeats(assentos.id, assentos.isAvailable)}>
@@ -82,20 +82,6 @@ function SelectionSeats(id, isAvailable){
             </div>)     }
         </div>
         <div>
-            <div>
-                <form onSubmit={fazerCadastro}>
-                    <div>
-                        <div>Nome do comprador:</div>
-                        <input placeholder="Digite seu nome..." type="text" value={name} onChange={e => setname(e.target.value)} required/>
-                    </div>
-                    <div>
-                        <div>CPF do comprador:</div>
-                        <input placeholder="Digite seu CPF..." type="text" value={cpf} onChange={e => setcpf(e.target.value)} required/>
-                    </div>
-                        <button >Reservar assento(s)</button>
-                </form>
-            </div>
-        </div>
         <div className='opcoes'>
             <div>
                 <div className="selecionado"></div>
@@ -110,12 +96,32 @@ function SelectionSeats(id, isAvailable){
                 <p>Indisponível</p>
             </div>
         </div>
-            <Base>
+            <div>
+                <form onSubmit={fazerCadastro}>
+                    <div>
+                        <div>Nome do comprador:</div>
+                        <input placeholder="Digite seu nome..." type="text" value={name} onChange={e => setname(e.target.value)} required/>
+                    </div>
+                    <div>
+                        <div>CPF do comprador:</div>
+                        <input placeholder="Digite seu CPF..." type="text" value={cpf} onChange={e => setcpf(e.target.value)} required/>
+                    </div>
+                        <button >Reservar assento(s)</button>
+                </form>
+            </div>
+        </div>
+      
+            <Footer>
 				<Poster src={Film.posterURL} alt="" />
-				<Texto>{Film.title} </Texto>
-                <Texto>{dia.date} </Texto>
-                <Texto>{Filme.name} </Texto>
-			</Base>
+                <Infos>
+                    <Texto>{Film.title} </Texto>
+                    <Dias>
+                        <Texto>{dia.date} </Texto>
+                        <Texto>{Filme.name} </Texto>
+                    </Dias>
+                </Infos>
+				
+             </Footer>
         </>
    )
 }
@@ -124,10 +130,36 @@ function SelectionSeats(id, isAvailable){
 
 
 
-const Base = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
+const Footer = styled.div`
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #DFE6ED;
+	height:117px;
+	
+	h1{
+        font-family: 'Roboto';
+		margin-left:15px
+		font-weight: 400;
+        font-size: 26px;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+
+
+	}
+    img{
+        width: 48px;
+        margin-bottom: 20px;
+        margin-left: 10px
+        background: #FFFFFF;
+    }
+    
 `;
 
 const Poster = styled.img`
@@ -135,12 +167,13 @@ const Poster = styled.img`
 	margin-bottom: 20px;
 	margin-left: 10px
 	background: #FFFFFF;
-box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-border-radius: 3px;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
 `;
 
 
 const Texto = styled.h1`
+
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
@@ -153,3 +186,19 @@ color: #293845;
 
 
 `;
+
+const Infos = styled.div`
+font-family: 'Roboto';
+    display: flex;
+	align-items: center;
+	flex-direction:column; 
+    font-size: 26px;
+    line-height: 30px;
+    margin-left: 20px
+
+`
+
+const Dias = styled.div`
+display: flex;
+align-items: center;
+`

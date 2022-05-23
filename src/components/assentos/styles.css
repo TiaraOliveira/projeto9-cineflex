@@ -15,6 +15,8 @@
 	align-items: center;
 	justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 50px;
+    margin-top: 50px;
 	
     
 }
@@ -55,4 +57,21 @@ border: 1px solid #F7C52B;
     background: #8DD7CF !important;
     border: 1px solid #1AAE9E !important;
     border-radius: 100%;
+}
+
+.Selecion{
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.04em;
+}
+
+button{
+    background-color: #E8833A;
 }

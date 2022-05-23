@@ -7,7 +7,7 @@ import styled from 'styled-components';
 function Images({posterURL, idfilme}){
     return(
 		<Link to={`/SelecaoHorario/${idfilme}`}>
-			 <Foto src={posterURL} alt="" />
+			 <img src={posterURL} alt="" />
 			
 		</Link>
        
@@ -31,16 +31,39 @@ export default function PaginaPrincipal() {
 	return (
 		
 		<>
-			
-			<h2>Selecione o filme</h2>
-			{Filmes.map(item => <Images  posterURL={item.posterURL} idfilme={item.id}/>)}
+			<Container>
+				<h2>Selecione o filme</h2>
+				<span>
+				{Filmes.map(item => <Images  posterURL={item.posterURL} idfilme={item.id}/>)}
+				</span>
+				
+			</Container>
 			
 		</>
 	);
 }
 
-const Foto = styled.img`
-	width: 129px;
-	margin-bottom: 20px;
-	margin-left: 10px
+const Container = styled.div`
+
+
+	img{
+		width: 129px;
+		margin-bottom: 20px;
+		margin-left: 20px
+		
+	}
+	h2{
+		font-weight: 400;
+		font-size: 34px;
+		line-height: 28px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		justify-content: center;
+		letter-spacing: 0.04em;
+		color: #293845;
+
+
+	}
+	
 `;

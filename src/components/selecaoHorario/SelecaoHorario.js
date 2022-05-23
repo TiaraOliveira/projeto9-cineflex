@@ -3,22 +3,22 @@ import {Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
-import "./styleshorarios.css"
+
 
 
 function HorariosSessoes({weekday, date, showtimes}){
 	return(
-		<div className="sessao">
-            <span className="dias">{weekday} - {date}</span>
-            <SessionTime>
+		<>
+            <h2>{weekday} - {date}</h2>
+            <Times>
                 {showtimes.map(horas => 
                     <Link to={`/assentos/${horas.id}`} key={horas.id}>
-                        <div className="hora">{horas.name}</div>
+                        <Sessoes>{horas.name}</Sessoes>
                     </Link>)
                 }
-            </SessionTime>
+            </Times>
 
-        </div>
+        </>
   );
    
 }
@@ -43,68 +43,105 @@ export default function SelecaoHorario() {
 	  ;
 
 	return (
-		<>
+		<Container>
 			<h1>Selecione o horário</h1>
-			<div className='separahorarios'>
-			<div>
-		
-		{Horario.length === 0 ? 'ESPERA AI' :
-		Horario.map(sessoes => <HorariosSessoes  weekday={sessoes.weekday} date={sessoes.date} showtimes={sessoes.showtimes} key={sessoes.id} />)
-	  }
+			<separahorarios>
+				{Horario.length === 0 ? 'ESPERA AI' :	Horario.map(sessoes => <HorariosSessoes  weekday={sessoes.weekday} date={sessoes.date} showtimes={sessoes.showtimes} key={sessoes.id} />)
+			}
 
-		
-		</div>
-			</div>
-			
+			</separahorarios>
+				
 			<Footer>
-				<Foto src={Filme.posterURL} alt="" />
-				<Texto>{Filme.title} </Texto>
+				<img src={Filme.posterURL} alt="" />
+				<Titulo><h1>{Filme.title} </h1></Titulo>
+				
 			</Footer>
 			
-		</>
+		</Container>
 	);
 }
 
-
-const Foto = styled.img`
-	width: 129px;
+const Container = styled.div`
+font-family: 'Roboto';
+img{
+	width: 48px;
 	margin-bottom: 20px;
 	margin-left: 10px
 	background: #FFFFFF;
-box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-border-radius: 3px;
-`;
+}
+
+h1{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 23px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+	color: #293845;
+	word-wrap: wrap;
+}
+h2{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 23px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+	color: #293845;
+}
+	
+`
 
 const Footer = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-`;
+position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
 
-const Texto = styled.h1`
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #DFE6ED;
+	height:117px;
+	
+	h1{
+		margin-left:15px
+		font-weight: 400;
 font-size: 26px;
 line-height: 30px;
 display: flex;
 align-items: center;
 
-color: #293845;
 
-
+	}
 `;
 
-const SessionTime = styled.div`
-display: flex;
-align-items: center;
-width: 83px;
-height: 43px;
-left: 114px;
-top: 227px;
+const Times = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
 
-background: #E8833A;
-border-radius: 3px;
-margin: 50px;
-`;
+`
 
+const Sessoes = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #FFFFFF;
+	background: #E8833A;
+	width: 82px;
+	height: 43px; 
+	margin-bottom: 22px;
+	margin-right: 10px;
+
+`
+
+const Titulo = styled.div`
+	margin-left: 20px
+	
+
+`
