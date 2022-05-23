@@ -4,6 +4,9 @@ import React from 'react';
 import "./styles.css"
 import styled from 'styled-components';
 
+
+export let infos = {}
+
 export default function SelecaoAssento(){
     const  { ID_DA_SESSAO }  = useParams();
 	const [Assento, setAssentos] = React.useState([]);
@@ -49,21 +52,20 @@ function SelectionSeats(id, isAvailable){
             numeroassentosreservado.push(assentos.name)
         }
       )
-      console.log(assentosreservados)
-		const infos = {
+		infos = {
 		    name: name,
 			cpf: cpf,
             title: Film.title,
             date: dia.date,
             time:  Filme.name,
-
-            
+       idsseats: numeroassentosreservado
 		}
+
+      
            const promise= axios.post(`https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many`, {ids:assentosreservados, name, cpf })
 
-           promise
-           .then(res=>{navigate('/sucesso')}, {infos})
-           .catch(err =>{alert("Não foi possivel fazer sua requisicao")})
+           promise.then(() => navigate("/sucesso", infos))
+           promise.catch(err =>{alert("Não foi possivel fazer sua requisicao")})
 
         }   
 

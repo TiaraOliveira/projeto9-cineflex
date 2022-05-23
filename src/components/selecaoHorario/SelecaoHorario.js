@@ -3,6 +3,8 @@ import {Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
+import "./styleshorarios.css"
+
 
 function HorariosSessoes({weekday, date, showtimes}){
 	return(
@@ -43,14 +45,17 @@ export default function SelecaoHorario() {
 	return (
 		<>
 			<h1>Selecione o horário</h1>
+			<div className='separahorarios'>
 			<div>
 		
-			{Horario.length === 0 ? 'ESPERA AI' :
-            Horario.map(sessoes => <HorariosSessoes  weekday={sessoes.weekday} date={sessoes.date} showtimes={sessoes.showtimes} key={sessoes.id} />)
-          }
+		{Horario.length === 0 ? 'ESPERA AI' :
+		Horario.map(sessoes => <HorariosSessoes  weekday={sessoes.weekday} date={sessoes.date} showtimes={sessoes.showtimes} key={sessoes.id} />)
+	  }
 
-			
+		
+		</div>
 			</div>
+			
 			<Footer>
 				<Foto src={Filme.posterURL} alt="" />
 				<Texto>{Filme.title} </Texto>
@@ -102,3 +107,4 @@ background: #E8833A;
 border-radius: 3px;
 margin: 50px;
 `;
+

@@ -15,7 +15,7 @@ const Container = styled.div`
 	justify-content: center;
 	background-color: #C3CFD9;
 	color: #E8833A;
-	width: 375px;
+	width:100%;
 	height: 67px;
 	font-family: 'Roboto';
 	font-style: normal;
